@@ -27,7 +27,7 @@ public class OrderUseCase {
         return OrderMapper.entityToHttp(orderDataProvider.findById(id));
     }
 
-    public OrderHttp saveUpdate(OrderHttp orderHttp, boolean update) {
+    public OrderHttp saveUpdate(OrderHttp orderHttp, boolean update) throws HandlerValidationException {
         return OrderMapper.entityToHttp(
                 orderDataProvider.saveOrUpdate(orderHttp, update));
     }

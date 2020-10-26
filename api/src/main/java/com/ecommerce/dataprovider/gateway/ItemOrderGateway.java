@@ -13,5 +13,4 @@ public interface ItemOrderGateway {
     ItemOrderEntity findById(Long id) throws HandlerValidationException;
     ItemOrderEntity saveOrUpdate(ItemOrderEntity productEntity, boolean update);
     void deleteById(Long id);
-
 }

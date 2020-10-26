@@ -33,8 +33,8 @@ public class CustomerDataProvider implements CustomerGateway {
         if(customerEntity.isPresent()) {
             return customerEntity.get();
         } else {
-            log.error(Constants.msgNaoEncontrado);
-            throw new HandlerValidationException(Constants.msgNaoEncontrado);
+            log.error(Constants.msgNotFound);
+            throw new HandlerValidationException(Constants.msgNotFound);
         }
     }
 

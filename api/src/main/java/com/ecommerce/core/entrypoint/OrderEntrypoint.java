@@ -38,13 +38,13 @@ public class OrderEntrypoint {
     }
 
     @PostMapping()
-    public ResponseEntity<OrderHttp> save(@RequestBody OrderHttp orderHttp) {
+    public ResponseEntity<OrderHttp> save(@RequestBody OrderHttp orderHttp) throws HandlerValidationException {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(useCase.saveUpdate(orderHttp, false));
     }
 
     @PutMapping()
-    public ResponseEntity<OrderHttp> update(@RequestBody OrderHttp orderHttp) {
+    public ResponseEntity<OrderHttp> update(@RequestBody OrderHttp orderHttp) throws HandlerValidationException {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(useCase.saveUpdate(orderHttp, true));
     }
@@ -55,8 +55,8 @@ public class OrderEntrypoint {
             useCase.delete(id);
             return ResponseEntity.ok().body(true);
         } catch (Exception e) {
-            log.error(Constants.msgNaoExcluido);
-            throw new HandlerValidationException(Constants.msgNaoExcluido);
+            log.error(Constants.msgNotDeleted);
+            throw new HandlerValidationException(Constants.msgNotDeleted);
         }
 
     }

@@ -37,8 +37,8 @@ public class ItemOrderDataProvider implements ItemOrderGateway {
         if(itemOrderEntity.isPresent()) {
             return itemOrderEntity.get();
         } else {
-            log.error(Constants.msgNaoEncontrado);
-            throw new HandlerValidationException(Constants.msgNaoEncontrado);
+            log.error(Constants.msgNotFound);
+            throw new HandlerValidationException(Constants.msgNotFound);
         }
     }
 
@@ -57,4 +57,5 @@ public class ItemOrderDataProvider implements ItemOrderGateway {
     public void deleteById(Long id) {
         itemOrderRepository.deleteById(id);
     }
+
 }

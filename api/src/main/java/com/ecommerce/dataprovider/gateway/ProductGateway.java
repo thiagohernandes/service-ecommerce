@@ -12,5 +12,6 @@ public interface ProductGateway {
     ProductEntity findById(Long id) throws HandlerValidationException;
     ProductEntity saveOrUpdate(ProductEntity productEntity, boolean update);
     void deleteById(Long id);
+    boolean checkItemAvailableToSell(Long id, Integer qtdToSell) throws HandlerValidationException;
 
 }

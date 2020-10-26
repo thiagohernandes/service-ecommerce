@@ -55,8 +55,8 @@ public class ProductEntrypoint {
             useCase.delete(id);
             return ResponseEntity.ok().body(true);
         } catch (Exception e) {
-            log.error(Constants.msgNaoExcluido);
-            throw new HandlerValidationException(Constants.msgNaoExcluido);
+            log.error(Constants.msgNotDeleted);
+            throw new HandlerValidationException(Constants.msgNotDeleted);
         }
 
     }

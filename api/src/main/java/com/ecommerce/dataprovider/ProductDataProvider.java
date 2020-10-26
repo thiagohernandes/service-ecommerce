@@ -33,8 +33,8 @@ public class ProductDataProvider implements ProductGateway {
         if(productEntity.isPresent()) {
             return productEntity.get();
         } else {
-            log.error(Constants.msgNaoEncontrado);
-            throw new HandlerValidationException(Constants.msgNaoEncontrado);
+            log.error(Constants.msgNotFound);
+            throw new HandlerValidationException(Constants.msgNotFound);
         }
     }
 
@@ -52,5 +52,14 @@ public class ProductDataProvider implements ProductGateway {
 
     public void deleteById(Long id) {
         productRepository.deleteById(id);
+    }
+
+    public boolean checkItemAvailableToSell(Long id, Integer qtdToSell) throws HandlerValidationException {
+       boolean itemOk = true;
+       ProductEntity productEntity = findById(id);
+       if (productEntity.getQuantity() < qtdToSell) {
+           itemOk = false;
+       }
+       return itemOk;
     }
 }

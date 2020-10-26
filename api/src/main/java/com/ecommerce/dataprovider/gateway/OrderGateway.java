@@ -11,7 +11,7 @@ public interface OrderGateway {
 
     List<OrderEntity> listAll();
     OrderEntity findById(Long id) throws HandlerValidationException;
-    OrderEntity saveOrUpdate(OrderHttp orderHttp, boolean update);
+    OrderEntity saveOrUpdate(OrderHttp orderHttp, boolean update) throws HandlerValidationException;
     void deleteById(Long id);
 
 }

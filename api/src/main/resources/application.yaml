@@ -1,0 +1,39 @@
+server:
+  port: 8000
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  error:
+    whitelabel:
+      enabled: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+  datasource:
+    url: jdbc:h2:mem:h2db
+    driverClassName: org.h2.Driver
+    username: admin
+    password: 123456
+    database-plataform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+
+ecommerce:
+  api: /v1

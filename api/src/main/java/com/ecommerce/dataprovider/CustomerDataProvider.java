@@ -1,8 +1,7 @@
 package com.ecommerce.dataprovider;
 
-import com.ecommerce.core.handler.exception.HandlerExceptionNotFound;
 import com.ecommerce.core.handler.exception.HandlerValidationException;
-import com.ecommerce.dataprovider.constants.CustomerConstants;
+import com.ecommerce.dataprovider.constants.Constants;
 import com.ecommerce.dataprovider.entity.CustomerEntity;
 import com.ecommerce.dataprovider.gateway.CustomerGateway;
 import com.ecommerce.dataprovider.repository.CustomerRepository;
@@ -10,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,11 +33,12 @@ public class CustomerDataProvider implements CustomerGateway {
         if(customerEntity.isPresent()) {
             return customerEntity.get();
         } else {
-            log.error(CustomerConstants.msgClienteNaoEncontrado);
-            throw new HandlerValidationException(CustomerConstants.msgClienteNaoEncontrado);
+            log.error(Constants.msgNaoEncontrado);
+            throw new HandlerValidationException(Constants.msgNaoEncontrado);
         }
     }
 
+    @Transactional
     public CustomerEntity saveOrUpdate(CustomerEntity customerEntity, boolean update) {
         if (update) {
             final CustomerEntity customerEntityUpdated = customerRepository.findById(customerEntity.getId()).get();

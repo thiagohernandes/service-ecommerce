@@ -18,3 +18,22 @@ CREATE TABLE products (
     price DOUBLE NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE orders (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    datebuy DATE NOT NULL,
+    idcustomer INTEGER NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idcustomer) REFERENCES customers (id)
+);
+
+CREATE TABLE itensorders (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    idorder INTEGER NOT NULL,
+    idproduct INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    price DOUBLE NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idorder) REFERENCES orders (id),
+    FOREIGN KEY (idproduct) REFERENCES products (id)
+);

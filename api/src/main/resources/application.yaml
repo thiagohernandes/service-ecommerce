@@ -7,10 +7,18 @@ server:
     whitelabel:
       enabled: false
 
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+
 spring:
   jpa:
     hibernate:
       ddl-auto: none
+    show-sql: true
 
   datasource:
     url: jdbc:h2:mem:h2db
